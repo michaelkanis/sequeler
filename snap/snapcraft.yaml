@@ -13,7 +13,7 @@ icon: sequeler.png
 
 apps:
   sequeler:
-    command: sequeler
+    command: desktop-launch $SNAP/bin/com.github.alecaddd.sequeler
     plugs:
       - x11
       - desktop
