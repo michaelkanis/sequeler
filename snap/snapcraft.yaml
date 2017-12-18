@@ -13,7 +13,7 @@ icon: sequeler.png
 
 apps:
   sequeler:
-    command: desktop-launch sequeler
+    command: sequeler
     plugs:
       - x11
       - desktop
@@ -50,7 +50,6 @@ parts:
       apt dist-upgrade -y
   sequeler:
     after: [granite, elementary, desktop-gtk3]
-    # source: https://github.com/Alecaddd/sequeler.git
     source: ./
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
@@ -75,7 +74,6 @@ parts:
       - libgda-5.0-mysql
       - libgda-5.0-postgres
     install: |
-      # cp schemas/com.github.alecaddd.sequeler.gschema.xml $SNAPCRAFT_PART_INSTALL/usr/share/glib-2.0/schemas
       glib-compile-schemas $SNAPCRAFT_PART_INSTALL/usr/share/glib-2.0/schemas
     prime:
       - usr/share
