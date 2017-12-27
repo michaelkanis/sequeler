@@ -1,12 +1,17 @@
 [Desktop Entry]
 Name=Sequeler
 GenericName=Sequeler App
+GenericName[lt]=Sequeler programa
+GenericName[es]=Aplicación Sequeler
 Comment=Friendly SQL Client
+Comment[lt]=Draugiška SQL kliento programa
+Comment[es]=Cliente SQL amigable
 Categories=Utility;Development;
-Exec=sequeler.sequeler %U
+Exec=com.github.alecaddd.sequeler %U
 Icon=${SNAP}/meta/gui/sequeler.png
 Terminal=false
 Type=Application
 X-GNOME-Gettext-Domain=sequeler
 Keywords=SQL;MySql;Database;MariaDB;S3;PostgreSQL;
 X-GNOME-UsesNotifications=true
+
