@@ -5,6 +5,6 @@ services:
 script:
 - wget -O- https://raw.githubusercontent.com/harisvsulaiman/element-build/master/script.sh
   | sh -
-branches: master
+branches: new-gdaui
 except:
 - /^debian\/\d/
