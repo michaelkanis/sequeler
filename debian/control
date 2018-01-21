@@ -17,8 +17,7 @@ Build-Depends: cmake (>= 2.8),
                libmysqlclient-dev,
                libpq-dev,
                libgda-5.0-mysql,
-               libgda-5.0-postgres,
-               libgda-ui-5.0
+               libgda-5.0-postgres
 
 Standards-Version: 3.9.3
 Package: com.github.alecaddd.sequeler
