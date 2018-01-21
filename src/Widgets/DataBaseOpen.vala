@@ -276,10 +276,19 @@ namespace Sequeler {
             db_structure.pack_start (structure_scroll, true, true, 0);
 
             //  structure_results = new Sequeler.TreeBuilder (structure_query (selected_table));
-            results_view = new Gdaui.RawGrid (structure_query (selected_table));
-            results_view.enable_grid_lines = Gtk.TreeViewGridLines.HORIZONTAL;
-            results_view.rules_hint = true;
-            results_view.show_expanders = true;
+            structure_results = new Gdaui.RawGrid (structure_query (selected_table));
+            //  structure_results.enable_grid_lines = Gtk.TreeViewGridLines.HORIZONTAL;
+            structure_results.rules_hint = true;
+            structure_results.show_expanders = true;
+            structure_results.rubber_banding = true;
+            structure_results.headers_visible = true;
+            structure_results.enable_search = true;
+            structure_results.columns_autosize ();
+            foreach (var column in structure_results.get_columns ()) {
+                column.sort_indicator = true;
+                column.resizable = true;
+                column.clickable = true;
+            }
             structure_scroll.add (structure_results);
 
             db_structure.show_all ();
@@ -385,9 +394,10 @@ namespace Sequeler {
             
             //  results_view = new Sequeler.TreeBuilder (response);
             results_view = new Gdaui.RawGrid (response);
-            results_view.enable_grid_lines = Gtk.TreeViewGridLines.HORIZONTAL;
+            //  results_view.enable_grid_lines = Gtk.TreeViewGridLines.HORIZONTAL;
             results_view.rules_hint = true;
             results_view.show_expanders = true;
+            results_view.columns_autosize ();
             scroll_results.add (results_view);
 
             scroll_results.show_all ();

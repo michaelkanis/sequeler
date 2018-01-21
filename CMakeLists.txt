@@ -53,7 +53,6 @@ vala_precompile(VALA_C ${EXEC_NAME}
     src/Partials/ToolBar.vala
     src/Partials/ButtonType.vala
     src/Partials/HeaderTypes.vala
-    # src/Partials/MessageDialog.vala
     src/Partials/QueryBuilder.vala
     src/Partials/SimpleSettingsPage.vala
 
@@ -78,6 +77,7 @@ PACKAGES
     gobject-2.0
     libxml-2.0
     libgda-5.0
+    libgda-ui-5.0
     gtksourceview-3.0
 OPTIONS
     -g
