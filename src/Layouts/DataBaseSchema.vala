@@ -60,26 +60,16 @@ public class Sequeler.Layouts.DataBaseSchema : Gtk.Grid {
 		var cell = new Gtk.CellRendererText ();
 
 		schema_list = new Gtk.ListStore (1, typeof (string));
-		schema_list.append (out iter);
-		schema_list.set (iter, Column.SCHEMAS, _("- Select Database -"));
 
 		schema_list_combo = new Gtk.ComboBox.with_model (schema_list);
 		schema_list_combo.hexpand = true;
 		schema_list_combo.pack_start (cell, false);
 		schema_list_combo.set_attributes (cell, "text", Column.SCHEMAS);
-
-		schema_list_combo.set_active (0);
 		schema_list_combo.margin_top = 10;
 		schema_list_combo.margin_bottom = 10;
 		schema_list_combo.margin_start = 10;
-		schema_list_combo.sensitive = false;
 
-		handler_id = schema_list_combo.changed.connect (() => {
-			if (schema_list_combo.get_active () == 0) {
-				return;
-			}
-			populate_schema (schemas[schema_list_combo.get_active ()], null);
-		});
+		reset_schema_combo();
 
 		var search_btn = new Sequeler.Partials.HeaderBarButton ("system-search-symbolic", _("Search Tables"));
 		search_btn.clicked.connect (toggle_search_tables);
@@ -138,7 +128,9 @@ public class Sequeler.Layouts.DataBaseSchema : Gtk.Grid {
 	}
 
 	private void reset_schema_combo () {
-		schema_list_combo.disconnect (handler_id);
+		if (handler_id > 0) {
+			schema_list_combo.disconnect (handler_id);
+		}
 
 		schema_list.clear ();
 		schema_list.append (out iter);
