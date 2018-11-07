@@ -135,13 +135,18 @@ public class Sequeler.Layouts.DataBaseSchema : Gtk.Grid {
 		schema_list.clear ();
 		schema_list.append (out iter);
 		schema_list.set (iter, Column.SCHEMAS, _("- Select Database -"));
+		schema_list.append (out iter);
+		schema_list.set (iter, Column.SCHEMAS, _("- Create Database -"));
 		schema_list_combo.set_active (0);
 		schema_list_combo.sensitive = false;
 
 		handler_id = schema_list_combo.changed.connect (() => {
 			if (schema_list_combo.get_active () == 0) {
 				return;
+			} else if (schema_list_combo.get_active() == 1) {
+				return;
 			}
+
 			populate_schema (schemas[schema_list_combo.get_active ()], null);
 		});
 	}
@@ -161,7 +166,7 @@ public class Sequeler.Layouts.DataBaseSchema : Gtk.Grid {
 
 		Gda.DataModelIter _iter = schema.create_iter ();
 		schemas = new Gee.HashMap<int, string> ();
-		int i = 1;
+		int i = 2;
 		while (_iter.move_next ()) {
 			schema_list.append (out iter);
 			schema_list.set (iter, Column.SCHEMAS, _iter.get_value_at (0).get_string ());
